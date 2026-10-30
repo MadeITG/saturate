@@ -7,8 +7,8 @@
 - **Environment**: Client
 - **Categories**: Utility, Quality of Life
 - **License**: LGPL-3.0-only
-- **Source URL**: `https://github.com/push0dev/saturate`
-- **Issues URL**: `https://github.com/push0dev/saturate/issues`
+- **Source URL**: `https://github.com/MadeITG/saturate`
+- **Issues URL**: `https://github.com/MadeITG/saturate/issues`
 
 ---
 
@@ -74,7 +74,7 @@ Vanilla Minecraft protocol does **not** send hunger or saturation of other playe
 ### 📜 Credits & License
 Saturate is a fork of [Health Indicators](https://github.com/AdyTech99/HealthIndicators) by AdyTech99.
 Licensed under the [GNU Lesser General Public License v3.0 (LGPL-3.0-only)](https://www.gnu.org/licenses/lgpl-3.0.html).
-Source code available at: `https://github.com/push0dev/saturate`.
+Source code available at: `https://github.com/MadeITG/saturate`.
 ```
 
 ---

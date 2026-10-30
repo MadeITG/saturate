@@ -5,7 +5,7 @@
   "name": "Saturate",
   "description": "Client-side Fabric mod that shows health, armor, food and saturation above players, with an estimation engine for servers that don't send it.",
   "authors": [
-    "push0dev",
+    "MadeITG",
     "AdyTech99"
   ],
   "license": "LGPL-3.0-only",
