@@ -1,0 +1,24 @@
+package local.saturate.enums;
+
+import dev.isxander.yacl3.api.NameableEnum;
+import net.minecraft.network.chat.Component;
+
+public enum DamageReasonEnum implements NameableEnum {
+   ANY("ANY"),
+   SELF("SELF"),
+   PLAYER("ANY PLAYER"),
+   MOB("ANY MOB"),
+   NATURE("NATURAL");
+
+   private final String displayName;
+
+   DamageReasonEnum(String displayName) {
+      this.displayName = displayName;
+   }
+
+   @Override
+   public Component getDisplayName() {
+      return Component.nullToEmpty(this.displayName);
+   }
+}
+

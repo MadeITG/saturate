@@ -1,0 +1,73 @@
+plugins {
+    id 'java'
+    id 'net.fabricmc.fabric-loom' version "${loom_version}"
+}
+
+def mcTarget = (findProperty('mc_target') ?: '26.1.2').toString()
+def mcProps = new Properties()
+file("versions/${mcTarget}.properties").withInputStream { mcProps.load(it) }
+
+version = mcTarget.startsWith('26.1') ? project.mod_version : "${project.mod_version}+${mcTarget}"
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+repositories {
+    maven {
+        name = 'isXander'
+        url = 'https://maven.isxander.dev/releases'
+    }
+    maven {
+        name = 'Quilt'
+        url = 'https://maven.quiltmc.org/repository/release'
+    }
+    maven {
+        name = 'TerraformersMC'
+        url = 'https://maven.terraformersmc.com/'
+    }
+    maven {
+        name = 'Modrinth'
+        url = 'https://api.modrinth.com/maven'
+    }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${mcProps.minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${mcProps.fabric_version}"
+
+    implementation "dev.isxander:yet-another-config-lib:${mcProps.yacl_version}"
+    compileOnly "com.terraformersmc:modmenu:${mcProps.modmenu_version}"
+    localRuntime "com.terraformersmc:modmenu:${mcProps.modmenu_version}"
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mcDep", mcProps.mc_dep
+
+    filesMatching("fabric.mod.json") {
+        expand "version": inputs.properties.version, "mcDep": inputs.properties.mcDep
+    }
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+    withSourcesJar()
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.encoding = "UTF-8"
+    it.options.release = 25
+}
+
+
+sourceSets {
+    main {
+        java.srcDir "src/compat/${mcProps.compat}/java"
+        resources.srcDir "src/compat/${mcProps.compat}/resources"
+    }
+}

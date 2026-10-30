@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "saturate",
+  "version": "${version}",
+  "name": "Saturate",
+  "description": "Client-side Fabric mod that shows health, armor, food and saturation above players, with an estimation engine for servers that don't send it.",
+  "authors": [
+    "push0dev",
+    "AdyTech99"
+  ],
+  "license": "LGPL-3.0-only",
+  "custom": {
+    "modmenu": {
+      "update_checker": false
+    },
+    "credits": "Based on Health Indicators by AdyTech99 - https://github.com/AdyTech99/HealthIndicators"
+  },
+  "icon": "assets/saturate/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "local.saturate.SaturateFabric"
+    ],
+    "modmenu": [
+      "local.saturate.config.ModMenuAPIImpl"
+    ]
+  },
+  "mixins": [
+    "saturate.mixins.json",
+    "saturate.compat.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.3",
+    "fabric-api": "*",
+    "minecraft": "${mcDep}",
+    "yet_another_config_lib_v3": "*",
+    "java": ">=21"
+  }
+}
